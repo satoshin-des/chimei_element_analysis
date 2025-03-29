@@ -137,6 +137,14 @@ const ELEMENT_DATA = {
     ]
 }
 
+fetch('data.json')  // ルートディレクトリにあるdata.jsonを読み込む
+    .then(response => {
+        return response.json();  // JSON形式に変換
+    })
+    .then(data => {
+        console.log(data);  // JSONの内容を表示
+    });
+
 function isZero(vec) {
     for (let i = 0; i < vec.length; i++) {
         if (vec[i] !== 0) {
