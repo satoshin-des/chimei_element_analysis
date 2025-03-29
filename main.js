@@ -1,10 +1,11 @@
-data = fetch('data.json')
+let jsonData;
+
+fetch('data.json')
     .then(response => {
         return response.json();
     })
     .then(data => {
-        console.log(data);
-        return data;
+        jsonData = data;
     });
 
 function isZero(vec) {
@@ -31,8 +32,8 @@ function searchPlaceNameElements(str) {
         // 出力する文字列の設定
         temp = "";
         for (let j = 0; j < str.length; j++) {
-            if (str[j] in data) {
-                temp += data[str[j]][c[j]];
+            if (str[j] in jsonData) {
+                temp += jsonData[str[j]][c[j]];
             } else {
                 temp += "？";
             }
@@ -44,7 +45,7 @@ function searchPlaceNameElements(str) {
         outputString += `${temp}<br>`;
 
         c[0] += 1;
-        if (c[0] >= data[str[0]].length) {
+        if (c[0] >= jsonData[str[0]].length) {
             flags[0] = true;
             c[0] = 0;
         }
@@ -52,7 +53,7 @@ function searchPlaceNameElements(str) {
         for (let j = 1; j < str.length; j++) {
             if (flags[j - 1]) {
                 c[j] += 1;
-                if (c[j] >= data[str[j]].length) {
+                if (c[j] >= jsonData[str[j]].length) {
                     flags[j] = true;
                     c[j] = 0;
                 }
