@@ -1,9 +1,10 @@
-fetch('data.json')  // ルートディレクトリにあるdata.jsonを読み込む
+data = fetch('data.json')
     .then(response => {
-        return response.json();  // JSON形式に変換
+        return response.json();
     })
     .then(data => {
-        data = data;
+        console.log(data);
+        return data;
     });
 
 function isZero(vec) {
